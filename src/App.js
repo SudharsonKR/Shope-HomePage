@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavebarComps from './Components/NavebarComps';
 import ReactStars from "react-rating-stars-component";
-function App() {
-  
+
+ 
   const data=[{
       image: "https://i.ytimg.com/vi/oEKW85qQNxg/sddefault.jpg",
       name: "Cauliflower chilli",
@@ -23,26 +23,28 @@ function App() {
               image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMoH_z-T9Upeoa8xDJ5hIvfIq8RhZjOMQkFw&usqp=CAU",
               name: "Chicken Fry",
               Price: "₹150.00"}
-          ]
-
+          ];
+function App() { 
+const [cartCount, setCartCount] = useState(0);
   return (
     <div>
       <NavebarComps/>
       <div>
-      <h1>Shopping Cart</h1>
-      
-          
-      <div className="App">
+      <h1>Shopping Cart {cartCount}</h1>
+      </div>
+      <div className="App">        
       {data.map((food, idx)=>(
       <Outputdata
       key={idx}
       image={food.image}
       name={food.name}
       Price={food.Price}
+      cartCount={cartCount}
+      setCartCount={setCartCount}  
       />     
       
     ))}
-        </div>
+        
     </div>
     </div>
     
@@ -52,36 +54,34 @@ function App() {
 
 export default App;
 
-function HandleClick(){
-return(
-<button disabled={false}>Add</button>
-)
-};
+function Outputdata({image, name, Price, cartCount, setCartCount}){
+  const [show, setShow] = useState(true);
+  const handleAddCart = () =>{
+    setShow(!show);
+    setCartCount(cartCount + 1);
+    setCartCount=cartCount + 1;
+  };
+  const handleRemoveCart = () =>{
+    setShow(!show);
+    setCartCount(cartCount - 1);
+  };
 
-
-function Outputdata(props){
-  // const data={
-  //   image: "https://w7.pngwing.com/pngs/407/726/png-transparent-cartoon-school-cartoon-child-child-photography-hand-thumbnail.png",
-  //   name: "ram",
-  //   course: "FSD-mern"
-  
-  // };
-return(
-  
+return(  
   <div class="component">
     
-    <img src={props.image} alt={props.name}/>
-    <h4>{props.name}</h4>
-    <h4>{props.Price}</h4>
+    <img src={image} alt={name}/>
     <div>
-    <button onClick={HandleClick}>Add</button>
-     <br/>
-     <br/>
-     <button> <ReactStars/></button>
-
+        <h4>{name}</h4>
+    <p>
+    <h4>{Price}</h4>
+    <button> <ReactStars/></button>
+    </p>  
     </div>
+     {show ? (<button onClick={handleAddCart}>Add to cart</button>)
+    :
+    (<button onClick={handleRemoveCart}>Remove cart</button>)
+     }
   </div>
-  
-)
+  )
 
 }

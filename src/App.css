@@ -6,21 +6,21 @@ display: flex;
 }
 
 .component{
-  border: none;
+  border: 1px;
   width: 200px;
-  height: 350px;
+  height: 400px;
   margin: 10px; 
   border-radius:10%;
   background-color:aqua;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
+  padding: 15px;
    }
 
-img{
+/* img{
   width: 100%;
   border-radius: 10%; 
 
-}
-
-.d-flex {
-  display: flex !important;
-}
+} */
