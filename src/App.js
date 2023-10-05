@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavebarComps from './Components/NavebarComps';
+import ReactStars from "react-rating-stars-component";
 function App() {
   
   const data=[{
@@ -74,6 +75,10 @@ return(
     <h4>{props.Price}</h4>
     <div>
     <button onClick={HandleClick}>Add</button>
+     <br/>
+     <br/>
+     <button> <ReactStars/></button>
+
     </div>
   </div>
   

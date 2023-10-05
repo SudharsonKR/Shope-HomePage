@@ -7,12 +7,12 @@ display: flex;
 
 .component{
   border: none;
-  width: 150px;
-  height: 250px;
+  width: 200px;
+  height: 350px;
   margin: 10px; 
   border-radius:10%;
   background-color:aqua;
-  margin-left: 10px;
+  margin-left: auto;
    }
 
 img{
